@@ -184,7 +184,7 @@
                         <h4 class="card-title">New Products</h4>
                     </div>
                     <div class="card-header-toolbar d-flex align-items-center">
-                        <div><a href="{{ route('products.index') }}" class="btn btn-primary view-btn font-size-14">View All</a></div>
+                        <div><a href="{{ route('order.stockManage') }}" class="btn btn-primary view-btn font-size-14">View All</a></div>
                     </div>
                 </div>
                 <div class="card-body">
