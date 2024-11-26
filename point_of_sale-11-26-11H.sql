@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2024 at 09:13 PM
+-- Generation Time: Nov 26, 2024 at 02:17 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -242,7 +242,9 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 1),
-(3, 'App\\Models\\User', 2);
+(3, 'App\\Models\\User', 2),
+(5, 'App\\Models\\User', 4),
+(6, 'App\\Models\\User', 3);
 
 -- --------------------------------------------------------
 
@@ -267,6 +269,14 @@ CREATE TABLE `orders` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `customer_id`, `order_date`, `order_status`, `total_products`, `sub_total`, `vat`, `invoice_no`, `total`, `payment_status`, `pay`, `due`, `created_at`, `updated_at`) VALUES
+(1, '1', '2024-11-26', 'complete', 2, 88, 11, 'INV-000001', 99, 'HandCash', 100, -1, '2024-11-26 04:52:58', '2024-11-26 04:54:24'),
+(2, '1', '2024-11-26', 'complete', 3, 43, 5, 'INV-000002', 48, 'HandCash', 50, -2, '2024-11-26 05:05:43', '2024-11-26 05:14:47');
+
 -- --------------------------------------------------------
 
 --
@@ -283,6 +293,15 @@ CREATE TABLE `order_details` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `quantity`, `unitcost`, `total`, `created_at`, `updated_at`) VALUES
+(1, '1', '10', 2, 44, 99, '2024-11-26 04:52:58', NULL),
+(2, '2', '2', 2, 16, 36, '2024-11-26 05:05:43', NULL),
+(3, '2', '7', 1, 11, 12, '2024-11-26 05:05:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -395,15 +414,15 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `product_name`, `category_id`, `supplier_id`, `product_code`, `product_garage`, `product_image`, `product_store`, `buying_date`, `expire_date`, `buying_price`, `selling_price`, `created_at`, `updated_at`) VALUES
 (1, 'Gardenia Classic Loaf 600g', 1, 1, 'PC01', 'A', '1816160719351515.jpg', 988, '2024-11-19', '2026-11-19', 65, 82, '2024-11-19 04:44:25', '2024-11-19 06:17:12'),
-(2, 'Bear Brand Adult Milk 33g', 3, 1, 'PC02', 'A', '1816161176484720.jpg', 148, '2024-11-19', '2026-11-19', 14, 16, '2024-11-19 04:44:25', '2024-11-19 06:24:28'),
+(2, 'Bear Brand Adult Milk 33g', 3, 1, 'PC02', 'A', '1816161176484720.jpg', 146, '2024-11-19', '2026-11-19', 14, 16, '2024-11-19 04:44:25', '2024-11-26 05:14:47'),
 (3, 'Tender Juicy Hotdog 1000g', 2, 1, 'PC03', 'A', '1816162042915475.jpg', 103, '2024-11-19', '2024-12-15', 169, 200, '2024-11-19 04:44:25', '2024-11-19 06:38:14'),
-(4, 'Bear Brand Adult Milk 300g', 3, 1, 'PC04', 'C', '1816161281357588.jpg', 730, '2024-11-19', '2026-11-19', 115, 150, '2024-11-19 04:44:25', '2024-11-19 06:26:08'),
+(4, 'Bear Brand Adult Milk 300g', 3, 1, 'PC04', 'C', '1816161281357588.jpg', 730, '2024-11-19', '2026-11-19', 116, 150, '2024-11-19 04:44:25', '2024-11-19 12:42:13'),
 (5, 'Del Monte Tomato Paste 150g', 4, 1, 'PC05', 'D', '1816162389453328.jpg', 890, '2024-11-19', '2026-11-19', 25, 29, '2024-11-19 04:44:25', '2024-11-19 06:43:45'),
 (6, 'Marby Super Loaf 600g', 1, 1, 'PC06', 'B', '1816160842712622.jpg', 541, '2024-11-19', '2026-11-19', 68, 77, '2024-11-19 04:44:25', '2024-11-19 06:19:10'),
-(7, 'Bear Brand Powdered Milk Swak 33g', 3, 1, 'PC07', 'A', '1816161406555182.jpg', 252, '2024-11-19', '2026-11-19', 9, 11, '2024-11-19 04:44:25', '2024-11-19 06:28:07'),
+(7, 'Bear Brand Powdered Milk Swak 33g', 3, 1, 'PC07', 'A', '1816161406555182.jpg', 251, '2024-11-19', '2026-11-19', 9, 11, '2024-11-19 04:44:25', '2024-11-26 05:14:47'),
 (8, 'Bear Brand Powdered Milk 840g', 3, 1, 'PC08', 'D', '1816161768697303.jpg', 115, '2024-11-19', '2026-11-19', 254, 296, '2024-11-19 04:44:25', '2024-11-19 06:34:07'),
 (9, 'Alaska Fortified Powdered Milk 300g', 3, 1, 'PC09', 'D', '1816161892219052.jpg', 250, '2024-11-19', '2026-11-19', 77, 95, '2024-11-19 04:44:25', '2024-11-19 06:35:51'),
-(10, 'Marby Pinoy Loaf 450g', 1, 1, 'PC10', 'D', '1816160954995536.jpg', 612, '2024-11-19', '2026-11-19', 40, 44, '2024-11-19 04:44:25', '2024-11-19 06:20:57');
+(10, 'Marby Pinoy Loaf 450g', 1, 1, 'PC10', 'D', '1816160954995536.jpg', 610, '2024-11-19', '2026-11-19', 40, 44, '2024-11-19 04:44:25', '2024-11-26 04:54:24');
 
 -- --------------------------------------------------------
 
@@ -427,7 +446,9 @@ INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VAL
 (1, 'SuperAdmin', 'web', '2024-11-19 04:44:26', '2024-11-19 04:44:26'),
 (2, 'Admin', 'web', '2024-11-19 04:44:26', '2024-11-19 04:44:26'),
 (3, 'Account', 'web', '2024-11-19 04:44:26', '2024-11-19 04:44:26'),
-(4, 'Manager', 'web', '2024-11-19 04:44:26', '2024-11-19 04:44:26');
+(4, 'Manager', 'web', '2024-11-19 04:44:26', '2024-11-19 04:44:26'),
+(5, 'Cashier', 'web', '2024-11-19 19:59:42', '2024-11-19 19:59:42'),
+(6, 'Store Manager', 'web', '2024-11-19 20:00:20', '2024-11-19 20:00:20');
 
 -- --------------------------------------------------------
 
@@ -446,6 +467,7 @@ CREATE TABLE `role_has_permissions` (
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (1, 1),
+(1, 5),
 (2, 1),
 (2, 4),
 (3, 1),
@@ -458,12 +480,17 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (5, 4),
 (6, 1),
 (7, 1),
+(7, 6),
 (8, 1),
 (8, 4),
+(8, 6),
 (9, 1),
 (9, 4),
+(9, 5),
+(9, 6),
 (10, 1),
 (10, 4),
+(10, 6),
 (11, 1),
 (12, 1),
 (12, 2),
@@ -534,8 +561,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `username`, `photo`) VALUES
-(1, 'Admin', 'admin@gmail.com', '2024-11-19 04:44:25', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'v1daNkMNQwT0n5o1jG3a1Cx4CfqxGxx61aUXmNZsRdefAttPZOBUspiRYOIm', '2024-11-19 04:44:25', '2024-11-19 04:44:25', 'admin', NULL),
-(2, 'User', 'user@gmail.com', '2024-11-19 04:44:25', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'zvMGGdtg3k', '2024-11-19 04:44:25', '2024-11-19 04:44:25', 'user', NULL);
+(1, 'Admin', 'admin@gmail.com', '2024-11-19 04:44:25', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'qP0fM5V0C39lYIiVUoT8gxYg4TSu27LBXqPdavov1o67A156BqCHmz4ZX3Fw', '2024-11-19 04:44:25', '2024-11-19 04:44:25', 'admin', NULL),
+(2, 'User', 'user@gmail.com', '2024-11-19 04:44:25', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'zvMGGdtg3k', '2024-11-19 04:44:25', '2024-11-19 04:44:25', 'user', NULL),
+(3, 'Store Manager', 'store-manager@gmail.com', NULL, '$2y$10$j4mGfuQg7vpLx/RgrZxcsuVoZxlpKi1QHn/d7WRxSglrXd80EZr6.', NULL, '2024-11-19 20:07:55', '2024-11-19 20:07:55', 'store-manager', NULL),
+(4, 'Retail Cashier', 'cashier@gmail.com', NULL, '$2y$10$PVsC9XOOhMl2OcGClIvjieXvsZws524SFMCcgKF4zQmn3fClHA7pC', NULL, '2024-11-19 20:08:47', '2024-11-19 20:08:47', 'cashier', NULL);
 
 --
 -- Indexes for dumped tables
@@ -729,13 +758,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pay_salaries`
@@ -747,7 +776,7 @@ ALTER TABLE `pay_salaries`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -765,7 +794,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -777,7 +806,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
