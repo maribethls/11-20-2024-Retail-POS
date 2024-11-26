@@ -14,6 +14,7 @@
                         <form action="{{ route('pos.printInvoice') }}" method="post">
                             @csrf
                             {{-- <input type="hidden" name="customer_id" value="{{ $customer->id }}"> --}}
+                            <input type="hidden" name="customer_id" value="1">
                             <button type="submit" class="btn btn-primary-dark mr-2"><i class="las la-print"></i> Print</button>
                         </form>
 
@@ -24,11 +25,13 @@
                                 <div class="modal-content">
                                     <div class="modal-header bg-white">
                                         {{-- <h3 class="modal-title text-center mx-auto">Invoice of {{ $customer->name }}<br/>Total Amount ${{ Cart::total() }}</h3> --}}
+                                        <h3 class="modal-title text-center mx-auto">Total Amount Php {{ Cart::total() }}</h3>
                                     </div>
                                     <form action="{{ route('pos.storeOrder') }}" method="post">
                                         @csrf
                                         <div class="modal-body">
                                             {{-- <input type="hidden" name="customer_id" value="{{ $customer->id }}"> --}}
+                                            <input type="hidden" name="customer_id" value="1">
 
                                             <div class="col-md-12">
                                                 <div class="form-group">
@@ -85,7 +88,7 @@
                                         <tr>
                                             <th scope="col">Order Date</th>
                                             <th scope="col">Order Status</th>
-                                            <th scope="col">Billing Address</th>
+                                            {{-- <th scope="col">Billing Address</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>

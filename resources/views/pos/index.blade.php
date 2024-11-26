@@ -39,7 +39,7 @@
                                 <div class="input-group">
                                     <input type="number" class="form-control" name="qty" required value="{{ old('qty', $item->qty) }}">
                                     <div class="input-group-append">
-                                        <button type="submit" class="btn btn-success border-none" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sumbit"><i class="las la-check"></i></button>
+                                        <button type="submit" class="btn btn-success border-none" data-toggle="tooltip" data-placement="top" title="" data-original-title="Submit"><i class="las la-check"></i></button>
                                     </div>
                                 </div>
                             </form>
@@ -72,21 +72,22 @@
             <form action="{{ route('pos.createInvoice') }}" method="POST">
                 @csrf
                 <div class="row mt-3">
-                    <div class="col-md-12">
+                    {{-- <div class="col-md-12">
                         <div class="input-group">
-                            {{-- <select class="form-control" id="customer_id" name="customer_id">
+                            <select class="form-control" id="customer_id" name="customer_id">
                                 <option selected="" disabled="">-- Select Customer --</option>
                                 @foreach ($customers as $customer)
                                     <option value="{{ $customer->id }}">{{ $customer->name }}</option>
                                 @endforeach
-                            </select> --}}
+                            </select>
                         </div>
-                        {{-- @error('customer_id')
+                        @error('customer_id')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
-                        @enderror --}}
-                    </div>
+                        @enderror
+                    </div> --}}
+                    <input type="hidden" name="customer_id" value="1">
                     <div class="col-md-12 mt-4">
                         <div class="d-flex flex-wrap align-items-center justify-content-center">
                             {{-- <a href="{{ route('customers.create') }}" class="btn btn-primary add-list mx-1">Add Customer</a> --}}

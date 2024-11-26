@@ -47,23 +47,23 @@
                                 </div>
                                 <div class="col-sm-6 text-end mb-50">
                                     <h4 class="inv-title-1">POS</h4>
-                                    <p class="inv-from-1">pos@example.com</p>
-                                    <p class="inv-from-2">Cirebon, Indonesia</p>
+                                    <p class="inv-from-1">pos@retail.com</p>
+                                    <p class="inv-from-2">Metro Manila, Philippines</p>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-6 mb-50">
+                                {{-- <div class="col-sm-6 mb-50">
                                     <h4 class="inv-title-1">Customer</h4>
                                     <p class="inv-from-1">{{ $order->customer->name }}</p>
                                     <p class="inv-from-1">{{ $order->customer->email }}</p>
                                     <p class="inv-from-1">{{ $order->customer->phone }}</p>
                                     <p class="inv-from-2">{{ $order->customer->address }}</p>
-                                </div>
+                                </div> --}}
                                 <div class="col-sm-6 text-end mb-50">
                                     <h4 class="inv-title-1">Details</h4>
                                     <p class="inv-from-1">Payment Status: {{ $order->payment_status }}</p>
-                                    <p class="inv-from-1">Total Pay: ${{ $order->pay }}</p>
-                                    <p class="inv-from-1">Due: ${{ $order->due }}</p>
+                                    <p class="inv-from-1">Total Pay: Php {{ $order->pay }}</p>
+                                    <p class="inv-from-1">Due: Php {{ $order->due }}</p>
                                 </div>
                             </div>
                         </div>
@@ -83,16 +83,16 @@
                                         @foreach ($orderDetails as $item)
                                         <tr>
                                             <td>{{ $item->product->product_name }}</td>
-                                            <td>${{ $item->unitcost }}</td>
+                                            <td>Php {{ $item->unitcost }}</td>
                                             <td>{{ $item->quantity }}</td>
-                                            <td>${{ $item->total }}</td>
+                                            <td>Php {{ $item->total }}</td>
                                         </tr>
                                         @endforeach
                                         <tr>
                                             <td><strong class="text-danger">Total</strong></td>
                                             <td></td>
                                             <td></td>
-                                            <td><strong class="text-danger">${{ $order->total }}</strong></td>
+                                            <td><strong class="text-danger">Php {{ $order->total }}</strong></td>
                                         </tr>
                                     </tbody>
                                 </table>

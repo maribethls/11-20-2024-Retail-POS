@@ -41,7 +41,7 @@
                                                     <th scope="col">Order Date</th>
                                                     <th scope="col">Order Status</th>
                                                     <th scope="col">Invoice No</th>
-                                                    <th scope="col">Billing Address</th>
+                                                    {{-- <th scope="col">Billing Address</th> --}}
                                                 </tr>
                                             </thead>
                                             <tbody>
